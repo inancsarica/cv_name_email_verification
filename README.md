@@ -11,6 +11,8 @@ FastAPI-based microservice that verifies whether a CV email definitively belongs
 
 ## Running locally
 ```bash
+python -m venv .venv
+source .venv/bin/activate
 pip install -r requirements.txt
 uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 ```
@@ -21,6 +23,12 @@ Set the Azure OpenAI values before running in a real environment:
 - `AZURE_OPENAI_ENDPOINT`
 - `AZURE_OPENAI_API_VERSION` (optional, defaults to `2024-02-15-preview`)
 - `AZURE_OPENAI_DEPLOYMENT`
+
+### Production
+Backend için uvicorn ile ayağa kaldırmak için örnek komut:
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --workers 4
+```
 
 ## API
 `POST /validate-cv-email`
